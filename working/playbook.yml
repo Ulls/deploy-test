@@ -1,0 +1,28 @@
+---
+
+- name: run the playbook tasks on the localhost
+  hosts: 127.0.0.1
+  connection: local
+  become: no
+  tasks:
+
+  - git:
+      repo: 'git@github.com:publickohls/deploy-test.git'
+      dest: ~/Deploy/PipelineTestRun
+      clone: yes
+      update: yes
+      accept_hostkey: yes
+      key_file: ~/.ssh/id_rsa
+
+  - name: Build application
+    shell: cd ~/Deploy/PipelineTestRun/start/ && ./mvnw package
+
+  - name: Build an image and push it to a private repo
+    docker_image:
+      path: ~/Deploy/PipelineTestRun/start
+      name: localhost:5000/deploy-test
+      tag: v3
+      push: yes
+
+  - name: Run the application
+    shell: docker run -p 8080:8080 localhost:5000/deploy-test:v3
