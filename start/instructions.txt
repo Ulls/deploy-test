@@ -1,0 +1,14 @@
+There exists a public repository at https://github.com/publickohls/deploy-test
+Inside this repo is a simple Java Spring Boot web application
+The working directory for the application is /Users/kullsperger/Source/PublicKohls/deploy-test/start
+The application is built using maven: ./mvnw package
+The application is run with the java command: java -jar target/gs-spring-boot-docker-0.1.0.jar
+When running, the application will respond on http://localhost:8080
+
+Please complete the following task:
+Create a Dockerfile and containerize the application
+Create an Ansible playbook that will...
+1) download the source to ~/Deploy/deploy-test
+2) build and containerize the application
+3) push the docker image to the localhost:5000 registry
+4) pull the image and run the application
