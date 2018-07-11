@@ -11,12 +11,13 @@ Please complete the following tasks:
 
 1) Create a Dockerfile and containerize the application
 1a) Run the application locally in its container
+1b) Create a docker registory running locally on port 5000
+1c) Push the container to the local registry
 
 2) Create an Ansible playbook to "deploy" the application.  The application will be deployed locally, to another directory.  The Ansible playbook should
 2a) download the source to ~/Deploy/deploy-test
-2b) Create a docker registory running locally on port 5000
-2c) build and containerize the application
-2d) push the docker image to the localhost:5000 registry
-2e) pull the image and run the application
+2b) build and containerize the application
+2c) push the docker image to the localhost:5000 registry
+2d) pull the image and run the application
 
 Run the playbook.  If the outcome is the application running locally, in a docker container from the ~/Deploy/deploy-test directory you have completed the exercise.
